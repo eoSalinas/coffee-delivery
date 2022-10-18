@@ -3,26 +3,24 @@ import backgroundIMG from '../../assets/background-gradient.svg'
 
 export const HomeContainer = styled.main`
   padding: 0 10rem;
+  margin-bottom: 9.8125rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`
+export const WelcomeContainer = styled.div`
+  height: 544px;
+  width: 100%;
 
-  div {
-    height: 544px;
-    width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.5rem;
 
-    padding: 0 10rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3.5rem;
-
-    background-image: url(${backgroundIMG});
-    background-size: cover;
-  }
+  /* background-image: url(${backgroundIMG});
+    background-size: cover; */
 `
 export const CopywritingContainer = styled.section`
   width: 36.75rem;
@@ -96,4 +94,18 @@ export const Badge = styled.span<BadgeProps>`
 
   background-color: ${(props) =>
     props.theme[BADGE_COLORS[props.backgroundColor]]};
+`
+export const ProductsListContainer = styled.section`
+  width: 100%;
+
+  h3 {
+    margin: 2rem 0 3.375rem 0;
+
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: 'Baloo 2', cursive;
+    line-height: 130%;
+
+    color: ${(props) => props.theme['brown-400']};
+  }
 `

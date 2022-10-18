@@ -1,7 +1,8 @@
 import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
 import { ShoppingCart, MapPin } from 'phosphor-react'
 
-import { CartButton, HeaderContainer, LocationButton } from './style'
+import { CartCount, HeaderContainer, LocationButton } from './style'
+import { CartButton } from '../../styles/buttons'
 
 export function Header() {
   return (
@@ -13,9 +14,9 @@ export function Header() {
           <MapPin size={22} weight="fill" color="#8047F8" />
           Guarujá, SP
         </LocationButton>
-        <CartButton>
+        <CartButton bgColor="yellow100" iconColor="yellow900">
           <ShoppingCart size={22} weight="fill" />
-          <span>3</span>
+          <CartCount>3</CartCount>
         </CartButton>
       </div>
     </HeaderContainer>
