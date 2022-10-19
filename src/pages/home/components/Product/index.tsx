@@ -1,5 +1,10 @@
 import { CartButton } from '../../../../styles/buttons'
-import { ButtonsContainer, ProductContainer, ProductTag } from './style'
+import {
+  ButtonsContainer,
+  CartControlContainer,
+  ProductContainer,
+  ProductTag,
+} from './style'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import expressoTradicionalIMG from '../../../../assets/coffees/expresso-tradicional.svg'
 
@@ -17,11 +22,11 @@ export function Product() {
         <label>
           R$<span>9,90</span>
         </label>
-        <div>
+        <CartControlContainer>
           <Minus size={14} weight="bold" />
+          <span>1</span>
           <Plus size={14} weight="bold" />
-        </div>
-        <input type="number" name="amount" id="amount" step={1} value={1} />
+        </CartControlContainer>
 
         <CartButton bgColor="purple900" iconColor="white">
           <ShoppingCart size={22} weight="fill" />

@@ -56,7 +56,7 @@ export const ProductTag = styled.span`
   color: ${(props) => props.theme['yellow-900']};
 `
 export const ButtonsContainer = styled.div`
-  width: 13rem;
+  width: 100%;
 
   display: flex;
   justify-content: center;
@@ -78,42 +78,25 @@ export const ButtonsContainer = styled.div`
       color: ${(props) => props.theme['brown-300']};
     }
   }
+`
+export const CartControlContainer = styled.div`
+  width: 4.5rem;
+  height: 2.375rem;
 
-  div {
-    position: absolute;
-    width: 4.5rem;
-    height: 2.375rem;
+  margin: 0 0.5rem 0 1.4375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0 0rem 0 2.67rem;
+  border-radius: 6px;
+  background: ${(props) => props.theme['gray-400']};
+  color: ${(props) => props.theme['purple-500']};
 
-    border-radius: 6px;
-
-    color: ${(props) => props.theme['purple-500']};
-  }
-
-  input[type='number'] {
-    width: 4.5rem;
-    height: 2.375rem;
-
-    margin: 0 0.5rem 0 1.625rem;
-
-    border: none;
-    border-radius: 6px;
+  span {
+    margin: 0 0.25rem;
+    line-height: 130%;
     font-size: 1rem;
-    text-align: center;
-
-    background: ${(props) => props.theme['gray-400']};
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+    color: ${(props) => props.theme['brown-700']};
+    font-family: 'Roboto', sans-serif;
   }
 `
