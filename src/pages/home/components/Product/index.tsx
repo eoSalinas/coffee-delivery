@@ -7,8 +7,23 @@ import {
 } from './style'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import expressoTradicionalIMG from '../../../../assets/coffees/expresso-tradicional.svg'
+import { useState } from 'react'
 
 export function Product() {
+  const [coffeeAmount, setCoffeeAmount] = useState(1)
+
+  function handleAddOne() {
+    if (coffeeAmount < 100) {
+      setCoffeeAmount((state) => state + 1)
+    }
+  }
+
+  function handleRemoveOne() {
+    if (coffeeAmount > 1) {
+      setCoffeeAmount((state) => state - 1)
+    }
+  }
+
   return (
     <ProductContainer>
       <img
@@ -23,9 +38,9 @@ export function Product() {
           R$<span>9,90</span>
         </label>
         <CartControlContainer>
-          <Minus size={14} weight="bold" />
-          <span>1</span>
-          <Plus size={14} weight="bold" />
+          <Minus size={14} weight="bold" onClick={handleRemoveOne} />
+          <span>{coffeeAmount}</span>
+          <Plus size={14} weight="bold" onClick={handleAddOne} />
         </CartControlContainer>
 
         <CartButton bgColor="purple900" iconColor="white">
