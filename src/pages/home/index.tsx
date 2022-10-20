@@ -2,12 +2,13 @@ import {
   Badge,
   CopywritingContainer,
   HomeContainer,
+  ProductsContainer,
   ProductsListContainer,
   WelcomeContainer,
 } from './style'
 import coffeHeadlineIMG from '../../assets/coffee-headline.svg'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
-import { Product } from './components/Product'
+import { Products } from './components/Products'
 
 export function Home() {
   return (
@@ -50,7 +51,9 @@ export function Home() {
       </WelcomeContainer>
       <ProductsListContainer>
         <h3>Nossos cafés</h3>
-        <Product />
+        <ProductsContainer>
+          <Products />
+        </ProductsContainer>
       </ProductsListContainer>
     </HomeContainer>
   )

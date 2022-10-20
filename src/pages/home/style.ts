@@ -109,3 +109,9 @@ export const ProductsListContainer = styled.section`
     color: ${(props) => props.theme['brown-400']};
   }
 `
+export const ProductsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+`
