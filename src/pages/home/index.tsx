@@ -1,6 +1,6 @@
-import { Products } from './components/Products'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import coffeHeadlineIMG from '../../assets/coffee-headline.svg'
+import { CoffeeMenu } from './components/CoffeeMenu'
 
 import { Badge, Copywriting, HomeContainer, Welcome } from './style'
 
@@ -43,7 +43,7 @@ export function Home() {
         </Copywriting>
         <img src={coffeHeadlineIMG} alt="Café da Coffee Delivery" />
       </Welcome>
-      <Products />
+      <CoffeeMenu />
     </HomeContainer>
   )
 }

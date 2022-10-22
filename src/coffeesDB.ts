@@ -22,7 +22,7 @@ interface Coffee {
   coffeeImg: string
 }
 
-export const coffees: Coffee[] = [
+export const coffeesDB: Coffee[] = [
   {
     id: 1,
     tags: ['Tradicional'],

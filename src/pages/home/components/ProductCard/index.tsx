@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { CartButton } from '../../../../styles/buttons'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
-import exempleIMG from '../../../../assets/coffees/arabe.svg'
 
 import {
   PriceAndControl,
@@ -9,9 +8,12 @@ import {
   ProductCardContainer,
   ProductTag,
 } from './style'
+import { CoffeesContext } from '../CoffeeMenu'
 
 export function ProductCard() {
   const [coffeeAmount, setCoffeeAmount] = useState(1)
+  const { coffeeImg, coffeeName, tags, details, price } =
+    useContext(CoffeesContext)
 
   function handleAddOne() {
     if (coffeeAmount < 100) {
@@ -27,18 +29,21 @@ export function ProductCard() {
 
   return (
     <ProductCardContainer>
-      <img src={exempleIMG} alt={`Uma xícara vista de cima de um café`} />
+      <img
+        src={coffeeImg}
+        alt={`Uma xícara de um café ${coffeeName} vista de cima`}
+      />
       <ProductTag>
-        <span>Especial</span>
-        <span>Gelado</span>
-        <span>Alcoólico</span>
+        {tags.map((tag) => {
+          return <span key={tag}>{tag}</span>
+        })}
       </ProductTag>
-      <h4>Expresso cremoso</h4>
-      <p>Café expresso tradicional com espuma cremosa</p>
+      <h4>{coffeeName}</h4>
+      <p>{details}</p>
       <PriceAndControl>
         <label>
           R$
-          <span>9.90</span>
+          <span>{price}</span>
         </label>
         <ItemCounterControl>
           <Minus size={14} weight="bold" onClick={handleRemoveOne} />

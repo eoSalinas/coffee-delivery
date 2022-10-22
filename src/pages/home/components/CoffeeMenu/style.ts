@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ProductsContainer = styled.section`
+export const CoffeeMenuContainer = styled.section`
   width: 100%;
 
   h3 {
