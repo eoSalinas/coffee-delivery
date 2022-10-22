@@ -1,20 +1,14 @@
-import {
-  Badge,
-  CopywritingContainer,
-  HomeContainer,
-  ProductsContainer,
-  ProductsListContainer,
-  WelcomeContainer,
-} from './style'
-import coffeHeadlineIMG from '../../assets/coffee-headline.svg'
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { Products } from './components/Products'
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import coffeHeadlineIMG from '../../assets/coffee-headline.svg'
+
+import { Badge, Copywriting, HomeContainer, Welcome } from './style'
 
 export function Home() {
   return (
     <HomeContainer>
-      <WelcomeContainer>
-        <CopywritingContainer>
+      <Welcome>
+        <Copywriting>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>
           <h2>
             Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
@@ -46,15 +40,10 @@ export function Home() {
               O café chega fresquinho até você
             </li>
           </ul>
-        </CopywritingContainer>
+        </Copywriting>
         <img src={coffeHeadlineIMG} alt="Café da Coffee Delivery" />
-      </WelcomeContainer>
-      <ProductsListContainer>
-        <h3>Nossos cafés</h3>
-        <ProductsContainer>
-          <Products />
-        </ProductsContainer>
-      </ProductsListContainer>
+      </Welcome>
+      <Products />
     </HomeContainer>
   )
 }

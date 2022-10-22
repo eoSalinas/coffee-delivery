@@ -1,8 +1,8 @@
-import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
+import { CartButton } from '../../styles/buttons'
 import { ShoppingCart, MapPin } from 'phosphor-react'
+import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
 
 import { CartCount, HeaderContainer, LocationButton } from './style'
-import { CartButton } from '../../styles/buttons'
 
 export function Header() {
   return (
