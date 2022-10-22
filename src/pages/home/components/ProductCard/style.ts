@@ -37,10 +37,9 @@ export const ProductCardContainer = styled.div`
   }
 `
 export const ProductTag = styled.div`
-  span {
-    width: 5.0625rem;
-    height: 1.3125rem;
+  display: flex;
 
+  span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,6 +54,10 @@ export const ProductTag = styled.div`
 
     background-color: ${(props) => props.theme['yellow-100']};
     color: ${(props) => props.theme['yellow-900']};
+
+    + span {
+      margin-left: 0.25rem;
+    }
   }
 `
 export const PriceAndControl = styled.div`

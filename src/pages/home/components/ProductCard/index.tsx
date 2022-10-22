@@ -29,7 +29,7 @@ export function ProductCard() {
     <ProductCardContainer>
       <img src={exempleIMG} alt={`Uma xícara vista de cima de um café`} />
       <ProductTag>
-        <span>Tradicional</span>
+        <span>Especial</span>
         <span>Gelado</span>
         <span>Alcoólico</span>
       </ProductTag>
