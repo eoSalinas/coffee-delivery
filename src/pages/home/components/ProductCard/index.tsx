@@ -21,16 +21,26 @@ export function ProductCard() {
   const { coffeeImg, coffeeName, tags, details, price } =
     useContext(CoffeesContext)
 
-  function handleAddOne() {
+  function resetCoffeeAmount() {
+    setCoffeeAmount(1)
+  }
+
+  function handleMoreOne() {
     if (coffeeAmount < 100) {
       setCoffeeAmount((state) => state + 1)
     }
   }
 
-  function handleRemoveOne() {
+  function handleLessOne() {
     if (coffeeAmount > 1) {
       setCoffeeAmount((state) => state - 1)
     }
+  }
+
+  function handleAddToCart() {
+    console.log(`Você adicionou ${coffeeAmount} ${coffeeName}`)
+
+    resetCoffeeAmount()
   }
 
   return (
@@ -52,12 +62,16 @@ export function ProductCard() {
           <span>{IntlCurrency.format(price)}</span>
         </label>
         <ItemCounterControl>
-          <Minus size={14} weight="bold" onClick={handleRemoveOne} />
+          <Minus size={14} weight="bold" onClick={handleLessOne} />
           <span>{coffeeAmount}</span>
-          <Plus size={14} weight="bold" onClick={handleAddOne} />
+          <Plus size={14} weight="bold" onClick={handleMoreOne} />
         </ItemCounterControl>
 
-        <CartButton bgColor="purple900" iconColor="white">
+        <CartButton
+          bgColor="purple900"
+          iconColor="white"
+          onClick={handleAddToCart}
+        >
           <ShoppingCart size={22} weight="fill" />
         </CartButton>
       </PriceAndControl>

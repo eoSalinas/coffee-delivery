@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { BaseButton } from '../../styles/buttons'
 
 export const HeaderContainer = styled.header`
-  padding: 2rem 10rem;
+  padding: 2rem 0rem;
 
   display: flex;
   align-items: center;

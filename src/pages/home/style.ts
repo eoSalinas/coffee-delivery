@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import backgroundIMG from '../../assets/background-gradient.svg'
 
 export const HomeContainer = styled.main`
-  padding: 0 10rem;
   margin-bottom: 9.8125rem;
 
   display: flex;
