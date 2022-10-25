@@ -99,6 +99,10 @@ export const AdressInput = styled.input<AdressInputProps>`
     color: ${(props) => props.theme['brown-100']};
   }
 
+  :focus {
+    outline: 1px solid ${(props) => props.theme['yellow-900']};
+  }
+
   &[type='number']::-webkit-outer-spin-button,
   &[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -139,6 +143,11 @@ export const PaymentLabel = styled.label`
   border-radius: 6px;
 
   background: ${(props) => props.theme['gray-400']};
+
+  &:hover {
+    transition: all 60ms;
+    background: ${(props) => props.theme['gray-900']};
+  }
 
   span {
     margin-left: 0.75rem;
