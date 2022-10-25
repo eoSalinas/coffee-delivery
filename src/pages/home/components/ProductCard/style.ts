@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { BaseButton } from '../../../../styles/baseButton'
 
 export const ProductCardContainer = styled.div`
   width: 16rem;
@@ -85,6 +86,13 @@ export const PriceAndControl = styled.div`
       color: ${(props) => props.theme['brown-300']};
     }
   }
+`
+export const CartButton = styled(BaseButton)`
+  width: 2.375rem;
+  margin-left: 0.5rem;
+
+  color: ${(props) => props.theme.white};
+  background: ${(props) => props.theme['purple-900']};
 `
 export const ItemCounterControl = styled.div`
   width: 4.5rem;

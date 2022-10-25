@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BaseButton } from '../../styles/buttons'
+import { BaseButton } from '../../styles/baseButton'
 
 export const HeaderContainer = styled.header`
   padding: 2rem 0rem;
@@ -22,20 +22,27 @@ export const LocationButton = styled(BaseButton)`
   background-color: ${(props) => props.theme['purple-100']};
   color: ${(props) => props.theme['purple-900']};
 `
-export const CartCount = styled.span`
-  height: 1.25rem;
-  width: 1.25rem;
+export const CartButtonWithCounter = styled(BaseButton)`
+  width: 2.375rem;
 
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: -8px -8.35px 26px 26.35px;
+  color: ${(props) => props.theme['yellow-900']};
+  background: ${(props) => props.theme['yellow-100']};
 
-  font-size: 0.75rem;
-  font-weight: 700;
-  border-radius: 50%;
+  span {
+    height: 1.25rem;
+    width: 1.25rem;
 
-  background-color: ${(props) => props.theme['yellow-900']};
-  color: ${(props) => props.theme.white};
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -8px -8.35px 26px 26.35px;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50%;
+
+    background-color: ${(props) => props.theme['yellow-900']};
+    color: ${(props) => props.theme.white};
+  }
 `

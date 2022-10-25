@@ -1,9 +1,13 @@
 import { useContext } from 'react'
-import { CartButton } from '../../../../styles/buttons'
 import { CoffeesContext } from '../CoffeeMenu'
 import { ShoppingCart } from 'phosphor-react'
 
-import { PriceAndControl, ProductCardContainer, ProductTag } from './style'
+import {
+  CartButton,
+  PriceAndControl,
+  ProductCardContainer,
+  ProductTag,
+} from './style'
 import { ItemCounter } from '../../../../components/ItemCounter'
 
 const IntlCurrency = Intl.NumberFormat('pt-BR', {
@@ -37,7 +41,7 @@ export function ProductCard() {
 
         <ItemCounter />
 
-        <CartButton bgColor="purple900" iconColor="white">
+        <CartButton>
           <ShoppingCart size={22} weight="fill" />
         </CartButton>
       </PriceAndControl>

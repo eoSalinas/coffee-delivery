@@ -2,8 +2,7 @@ import { ShoppingCart, MapPin } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
 
-import { CartButton } from '../../styles/buttons'
-import { CartCount, HeaderContainer, LocationButton } from './style'
+import { CartButtonWithCounter, HeaderContainer, LocationButton } from './style'
 
 export function Header() {
   return (
@@ -18,10 +17,10 @@ export function Header() {
           Guarujá, SP
         </LocationButton>
         <NavLink to="/checkout" title="Checkout">
-          <CartButton bgColor="yellow100" iconColor="yellow900">
+          <CartButtonWithCounter>
             <ShoppingCart size={22} weight="fill" />
-            <CartCount>3</CartCount>
-          </CartButton>
+            <span>3</span>
+          </CartButtonWithCounter>
         </NavLink>
       </div>
     </HeaderContainer>
