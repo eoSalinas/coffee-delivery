@@ -4,4 +4,5 @@ export const CheckoutContainer = styled.main`
   margin-top: 2.5rem;
   display: flex;
   justify-content: space-between;
+  gap: 0 2rem;
 `

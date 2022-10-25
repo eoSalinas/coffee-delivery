@@ -69,6 +69,8 @@ export const PriceAndControl = styled.div`
   padding: 0 1.5rem;
 
   label {
+    margin-right: 1.4375rem;
+
     line-height: 130%;
     font-size: 0.875rem;
 
