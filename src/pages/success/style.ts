@@ -43,21 +43,6 @@ export const PurchaseInfo = styled.div`
         margin-top: 2rem;
       }
 
-      div {
-        width: 2rem;
-        height: 2rem;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 0.75rem;
-
-        border-radius: 9999px;
-
-        background: ${(props) => props.theme['purple-500']};
-        color: ${(props) => props.theme.white};
-      }
-
       span {
         h3 {
           font-size: 1rem;

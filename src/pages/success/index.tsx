@@ -1,5 +1,6 @@
 import { CurrencyDollarSimple, MapPin, Timer } from 'phosphor-react'
 import deliveryGuyIMG from '../../assets/delivery-guy.svg'
+import { Badge } from '../../styles/Badge'
 
 import { PurchaseInfo, SuccesContainer } from './style'
 
@@ -11,9 +12,9 @@ export function Success() {
       <PurchaseInfo>
         <ul>
           <li>
-            <div>
+            <Badge backgroundColor="purple500">
               <MapPin size={16} weight="fill" />
-            </div>
+            </Badge>
             <span>
               <h3>
                 Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
@@ -22,18 +23,18 @@ export function Success() {
             </span>
           </li>
           <li>
-            <div>
+            <Badge backgroundColor="yellow500">
               <Timer size={16} weight="fill" />
-            </div>
+            </Badge>
             <span>
               <h3>Previsão de entrega</h3>
               <strong>20 min - 30 min</strong>
             </span>
           </li>
           <li>
-            <div>
+            <Badge backgroundColor="yellow900">
               <CurrencyDollarSimple size={16} />
-            </div>
+            </Badge>
             <span>
               <h3>Pagamento na entrega</h3>
               <strong>Cartão de Crédito</strong>
