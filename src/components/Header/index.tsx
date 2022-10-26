@@ -11,7 +11,7 @@ export function Header() {
         <img src={logoCoffeeDelivery} alt="Coffe Delivery logotipo" />
       </NavLink>
 
-      <div>
+      <nav>
         <LocationButton>
           <MapPin size={22} weight="fill" color="#8047F8" />
           Guarujá, SP
@@ -22,7 +22,7 @@ export function Header() {
             <span>3</span>
           </CartButtonWithCounter>
         </NavLink>
-      </div>
+      </nav>
     </HeaderContainer>
   )
 }

@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
 
-  div {
+  nav {
     display: flex;
     align-items: center;
     gap: 0.75rem;

@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { ItemCounter } from '../../../../components/ItemCounter'
 import { CoffeesContext } from '../CoffeeMenu'
 import { ShoppingCart } from 'phosphor-react'
 
@@ -8,7 +9,6 @@ import {
   ProductCardContainer,
   ProductTag,
 } from './style'
-import { ItemCounter } from '../../../../components/ItemCounter'
 
 const IntlCurrency = Intl.NumberFormat('pt-BR', {
   // style: 'currency',

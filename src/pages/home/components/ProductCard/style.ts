@@ -94,24 +94,3 @@ export const CartButton = styled(BaseButton)`
   color: ${(props) => props.theme.white};
   background: ${(props) => props.theme['purple-900']};
 `
-export const ItemCounterControl = styled.div`
-  width: 4.5rem;
-  height: 2.375rem;
-
-  margin: 0 0.5rem 0 1.4375rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 6px;
-  background: ${(props) => props.theme['gray-400']};
-  color: ${(props) => props.theme['purple-500']};
-
-  span {
-    margin: 0 0.25rem;
-    line-height: 130%;
-    font-size: 1rem;
-    color: ${(props) => props.theme['brown-700']};
-    font-family: 'Roboto', sans-serif;
-  }
-`
