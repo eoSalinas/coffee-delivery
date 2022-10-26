@@ -80,7 +80,7 @@ interface BadgeProps {
   backgroundColor: keyof typeof BADGE_COLORS
 }
 
-export const Badge = styled.span<BadgeProps>`
+export const Badge = styled.div<BadgeProps>`
   width: 32px;
   height: 32px;
 
