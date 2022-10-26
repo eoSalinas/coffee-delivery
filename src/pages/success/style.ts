@@ -35,7 +35,6 @@ export const PurchaseInfo = styled.div`
     padding: 2.5rem;
 
     border: 1px solid;
-    /* border-radius: 6px 36px; */
     background: linear-gradient(
           ${(props) => props.theme['gray-100']},
           ${(props) => props.theme['gray-100']}
