@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
 import { CoffeesContext } from '../CoffeeMenu'
 import { CartContext } from '../../../../context/CartContext'
@@ -15,6 +15,14 @@ const IntlCurrency = Intl.NumberFormat('pt-BR', {
   currency: 'BRL',
   minimumFractionDigits: 2,
 })
+
+interface CoffeeAmountContextType {
+  coffeeAmount: number
+  SetCoffeeAmountLessOne: () => void
+  SetCoffeeAmountMoreOne: () => void
+}
+
+export const CoffeeAmountContext = createContext({} as CoffeeAmountContextType)
 
 export function ProductCard() {
   // Contexts
@@ -71,11 +79,15 @@ export function ProductCard() {
           <span>{IntlCurrency.format(price)}</span>
         </label>
 
-        <ItemCounter
-          coffeeAmount={coffeeAmount}
-          SetCoffeeAmountLessOne={SetCoffeeAmountLessOne}
-          SetCoffeeAmountMoreOne={SetCoffeeAmountMoreOne}
-        />
+        <CoffeeAmountContext.Provider
+          value={{
+            coffeeAmount,
+            SetCoffeeAmountLessOne,
+            SetCoffeeAmountMoreOne,
+          }}
+        >
+          <ItemCounter />
+        </CoffeeAmountContext.Provider>
 
         <CartButton onClick={handleAddItemToCart}>
           <ShoppingCart size={22} weight="fill" />

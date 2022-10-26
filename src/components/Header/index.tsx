@@ -12,6 +12,12 @@ export function Header() {
   // auxiliary variables
   const isCartEmpty = !cart.length
 
+  const initialValue = 0
+  const totalItensInCart = cart.reduce(
+    (previousValue, currentValue) => previousValue + currentValue.amount,
+    initialValue,
+  )
+
   return (
     <HeaderContainer>
       <NavLink to="/">
@@ -26,7 +32,7 @@ export function Header() {
         <NavLink to="/checkout" title="Checkout">
           <CartButtonWithCounter>
             <ShoppingCart size={22} weight="fill" />
-            {!isCartEmpty && <span>{cart.length}</span>}
+            {!isCartEmpty && <span>{totalItensInCart}</span>}
           </CartButtonWithCounter>
         </NavLink>
       </nav>
