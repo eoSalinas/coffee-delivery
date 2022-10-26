@@ -24,14 +24,25 @@ export const PurchaseInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 6.375rem;
 
   ul {
     width: 32.875rem;
+    min-width: 32.875rem;
     height: 16.875rem;
+    min-height: 16.875rem;
 
     padding: 2.5rem;
 
     border: 1px solid;
+    /* border-radius: 6px 36px; */
+    background: linear-gradient(
+          ${(props) => props.theme['gray-100']},
+          ${(props) => props.theme['gray-100']}
+        )
+        padding-box,
+      linear-gradient(95deg, #dbac2c, #8047f8) border-box;
+    border: 1px solid transparent;
     border-radius: 6px 36px;
     list-style: none;
 
