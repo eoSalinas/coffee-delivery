@@ -1,34 +1,38 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import { Minus, Plus } from 'phosphor-react'
 import { ItemCounterContainer } from './style'
 
-export function ItemCounter() {
-  const [coffeeAmount, setCoffeeAmount] = useState(1)
+interface ItemCounterProps {
+  coffeeAmount: number
+  SetCoffeeAmountLessOne: () => void
+  SetCoffeeAmountMoreOne: () => void
+}
 
-  // function resetCoffeeAmount() {
-  //   setCoffeeAmount(1)
-  // }
-
+export function ItemCounter({
+  coffeeAmount,
+  SetCoffeeAmountLessOne,
+  SetCoffeeAmountMoreOne,
+}: ItemCounterProps) {
   function handleMoreOne() {
     if (coffeeAmount < 99) {
-      setCoffeeAmount((state) => state + 1)
+      SetCoffeeAmountMoreOne()
     }
   }
 
   function handleLessOne() {
     if (coffeeAmount > 1) {
-      setCoffeeAmount((state) => state - 1)
+      SetCoffeeAmountLessOne()
     }
   }
 
   return (
     <ItemCounterContainer>
-      <button onClick={handleLessOne}>
-        <Minus size={14} weight="bold" />
+      <button>
+        <Minus size={14} weight="bold" onClick={handleLessOne} />
       </button>
       <span>{coffeeAmount}</span>
-      <button onClick={handleMoreOne}>
-        <Plus size={14} weight="bold" />
+      <button>
+        <Plus size={14} weight="bold" onClick={handleMoreOne} />
       </button>
     </ItemCounterContainer>
   )
