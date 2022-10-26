@@ -1,10 +1,17 @@
 import { ShoppingCart, MapPin } from 'phosphor-react'
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import logoCoffeeDelivery from '../../assets/logo-coffee-delivery.svg'
+import { CartContext } from '../../context/CartContext'
 
 import { CartButtonWithCounter, HeaderContainer, LocationButton } from './style'
 
 export function Header() {
+  const { cart } = useContext(CartContext)
+
+  // auxiliary variables
+  const isCartEmpty = !cart.length
+
   return (
     <HeaderContainer>
       <NavLink to="/">
@@ -19,7 +26,7 @@ export function Header() {
         <NavLink to="/checkout" title="Checkout">
           <CartButtonWithCounter>
             <ShoppingCart size={22} weight="fill" />
-            <span>3</span>
+            {!isCartEmpty && <span>{cart.length}</span>}
           </CartButtonWithCounter>
         </NavLink>
       </nav>
