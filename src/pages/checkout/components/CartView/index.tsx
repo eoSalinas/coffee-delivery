@@ -1,6 +1,7 @@
+import { useContext } from 'react'
+import { CartContext } from '../../../../context/CartContext'
 import { ItemCounter } from '../../../../components/ItemCounter'
 import { Trash } from 'phosphor-react'
-import { coffeesDB } from '../../../../coffeesDB'
 
 import {
   Cart,
@@ -12,47 +13,46 @@ import {
   RemoveFromCartButton,
 } from './style'
 
+const IntlCurrency = Intl.NumberFormat('pt-BR', {
+  style: 'currency',
+  currency: 'BRL',
+  minimumFractionDigits: 2,
+})
+
 export function CartView() {
+  const { cart } = useContext(CartContext)
+
   return (
     <CartViewContainer>
       <h2>Cafés selecionados</h2>
       <Cart>
-        <ItemList>
-          <img src={coffeesDB[0].coffeeImg} alt="" />
-          <ItemNote>
-            <span>
-              <h3>Expresso Tradicional</h3>
-              <p>R$9,90</p>
-            </span>
+        {cart.map((item) => {
+          return (
+            <>
+              <ItemList key={item.id}>
+                <img
+                  src={item.image}
+                  alt={`Vista de cima de um café ${item.name}`}
+                />
+                <ItemNote>
+                  <span>
+                    <h3>{`${item.name} (${item.amount}x)`}</h3>
+                    <p>{IntlCurrency.format(item.price)}</p>
+                  </span>
 
-            <div>
-              <ItemCounter />
-              <RemoveFromCartButton>
-                <Trash size={16} />
-                Remover
-              </RemoveFromCartButton>
-            </div>
-          </ItemNote>
-        </ItemList>
-        <hr />
-        <ItemList>
-          <img src={coffeesDB[0].coffeeImg} alt="" />
-          <ItemNote>
-            <span>
-              <h3>Expresso Tradicional</h3>
-              <p>R$9,90</p>
-            </span>
-
-            <div>
-              <ItemCounter />
-              <RemoveFromCartButton>
-                <Trash size={16} />
-                Remover
-              </RemoveFromCartButton>
-            </div>
-          </ItemNote>
-        </ItemList>
-        <hr />
+                  <div>
+                    <ItemCounter />
+                    <RemoveFromCartButton>
+                      <Trash size={16} />
+                      Remover
+                    </RemoveFromCartButton>
+                  </div>
+                </ItemNote>
+              </ItemList>
+              <hr />
+            </>
+          )
+        })}
         <PurchaseNote>
           <span>
             <p>Total de itens</p>
