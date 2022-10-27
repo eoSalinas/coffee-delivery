@@ -22,6 +22,13 @@ const IntlCurrency = Intl.NumberFormat('pt-BR', {
 export function CartView() {
   const { cart } = useContext(CartContext)
 
+  const initialTotal = 0
+  const custOfCart = cart.reduce(
+    (previusValue, currentValue) =>
+      previusValue + currentValue.price * currentValue.amount,
+    initialTotal,
+  )
+
   return (
     <CartViewContainer>
       <h2>Cafés selecionados</h2>
@@ -56,7 +63,7 @@ export function CartView() {
         <PurchaseNote>
           <span>
             <p>Total de itens</p>
-            <p>R$29,70</p>
+            <p>{IntlCurrency.format(custOfCart)}</p>
           </span>
 
           <span>

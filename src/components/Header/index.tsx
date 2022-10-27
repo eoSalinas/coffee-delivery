@@ -12,10 +12,11 @@ export function Header() {
   // auxiliary variables
   const isCartEmpty = !cart.length
 
-  const initialValue = 0
+  // Calc the total itens in cart
+  const initialAmount = 0
   const totalItensInCart = cart.reduce(
     (previousValue, currentValue) => previousValue + currentValue.amount,
-    initialValue,
+    initialAmount,
   )
 
   return (

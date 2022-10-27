@@ -15,8 +15,6 @@ export const CartViewContainer = styled.aside`
   }
 `
 export const Cart = styled.div`
-  min-height: 31.125rem;
-
   padding: 2.5rem;
 
   border-radius: 6px 44px 6px 44px;
