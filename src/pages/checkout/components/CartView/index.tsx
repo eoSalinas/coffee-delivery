@@ -1,16 +1,12 @@
 import { useContext } from 'react'
 import { CartContext } from '../../../../context/CartContext'
-import { ItemCounter } from '../../../../components/ItemCounter'
-import { Trash } from 'phosphor-react'
+import { ItemList } from '../ItemList'
 
 import {
   Cart,
   CartViewContainer,
   ConfirmPurchaseButton,
-  ItemList,
-  ItemNote,
   PurchaseNote,
-  RemoveFromCartButton,
 } from './style'
 
 const IntlCurrency = Intl.NumberFormat('pt-BR', {
@@ -20,14 +16,22 @@ const IntlCurrency = Intl.NumberFormat('pt-BR', {
 })
 
 export function CartView() {
+  // Contexts
   const { cart } = useContext(CartContext)
 
+  // auxiliary variables
+  const isCartEmpty = !cart.length
+
+  // calc the total cust of cart
   const initialTotal = 0
   const custOfCart = cart.reduce(
     (previusValue, currentValue) =>
       previusValue + currentValue.price * currentValue.amount,
     initialTotal,
   )
+
+  const shippingPrice = 3.5
+  const totalPurchase = custOfCart + shippingPrice
 
   return (
     <CartViewContainer>
@@ -36,26 +40,7 @@ export function CartView() {
         {cart.map((item) => {
           return (
             <>
-              <ItemList key={item.id}>
-                <img
-                  src={item.image}
-                  alt={`Vista de cima de um café ${item.name}`}
-                />
-                <ItemNote>
-                  <span>
-                    <h3>{`${item.name} (${item.amount}x)`}</h3>
-                    <p>{IntlCurrency.format(item.price)}</p>
-                  </span>
-
-                  <div>
-                    <ItemCounter />
-                    <RemoveFromCartButton>
-                      <Trash size={16} />
-                      Remover
-                    </RemoveFromCartButton>
-                  </div>
-                </ItemNote>
-              </ItemList>
+              <ItemList key={item.id} currentItem={item} />
               <hr />
             </>
           )
@@ -73,7 +58,11 @@ export function CartView() {
 
           <span>
             <h3>Total</h3>
-            <p>R$33,20</p>
+            <p>
+              {isCartEmpty
+                ? IntlCurrency.format(0)
+                : IntlCurrency.format(totalPurchase)}
+            </p>
           </span>
         </PurchaseNote>
         <ConfirmPurchaseButton>Confirmar pedido</ConfirmPurchaseButton>
