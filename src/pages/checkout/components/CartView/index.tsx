@@ -39,10 +39,10 @@ export function CartView() {
       <Cart>
         {cart.map((item) => {
           return (
-            <>
+            <div key={item.id}>
               <ItemList key={item.id} currentItem={item} />
               <hr />
-            </>
+            </div>
           )
         })}
         <PurchaseNote>
