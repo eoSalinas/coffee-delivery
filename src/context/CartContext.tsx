@@ -30,9 +30,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   function removeItemAmountInCart(id: number, amount: number) {
     const copyCart = cart
     const findIndexInCart = copyCart.findIndex((item) => item.id === id)
-    const currentItemAmountToChange = copyCart[findIndexInCart].amount
 
-    copyCart[findIndexInCart].amount = currentItemAmountToChange - amount
+    copyCart[findIndexInCart].amount = amount
 
     setCart(copyCart)
     console.log(cart)

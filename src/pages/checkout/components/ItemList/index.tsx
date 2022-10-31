@@ -1,4 +1,4 @@
-import { Trash } from 'phosphor-react'
+import { ClockClockwise } from 'phosphor-react'
 import { createContext, useContext, useState } from 'react'
 import { CartContext, Item } from '../../../../context/CartContext'
 import { ItemCounterToDelete } from '../ItemCounterToDelete'
@@ -30,7 +30,7 @@ export function ItemList({ currentItem }: ItemListProps) {
   const { removeItemAmountInCart } = useContext(CartContext)
 
   // States
-  const [amountToDelete, setAmountToDelete] = useState(1)
+  const [amountToDelete, setAmountToDelete] = useState(currentItem.amount)
 
   // Functions
   function moreOne() {
@@ -57,7 +57,7 @@ export function ItemList({ currentItem }: ItemListProps) {
       />
       <ItemNote>
         <span>
-          <h3>{`${currentItem.name} (${currentItem.amount}x)`}</h3>
+          <h3>{`${currentItem.name}`}</h3>
           <p>{IntlCurrency.format(currentItem.price)}</p>
         </span>
 
@@ -70,8 +70,8 @@ export function ItemList({ currentItem }: ItemListProps) {
           <RemoveFromCartButton
             onClick={() => handleRemoveAmountInCart(currentItem.id)}
           >
-            <Trash size={16} />
-            Remover
+            <ClockClockwise size={16} />
+            Atualizar
           </RemoveFromCartButton>
         </div>
       </ItemNote>
