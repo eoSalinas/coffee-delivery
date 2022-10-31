@@ -11,7 +11,7 @@ export interface Item {
 interface CartContextType {
   cart: Item[]
   addItemInCart: (item: Item) => void
-  removeItemAmountInCart: (id: number, amount: number) => void
+  updateItemAmountInCart: (id: number, amount: number) => void
 }
 
 interface CartContextProviderProps {
@@ -27,7 +27,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCart((state) => [...state, item])
   }
 
-  function removeItemAmountInCart(id: number, amount: number) {
+  function updateItemAmountInCart(id: number, amount: number) {
     const copyCart = cart
     const findIndexInCart = copyCart.findIndex((item) => item.id === id)
 
@@ -39,7 +39,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addItemInCart, removeItemAmountInCart }}
+      value={{ cart, addItemInCart, updateItemAmountInCart }}
     >
       {children}
     </CartContext.Provider>

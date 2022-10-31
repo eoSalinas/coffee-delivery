@@ -27,26 +27,22 @@ export const AmountToDeleteContext = createContext(
 
 export function ItemList({ currentItem }: ItemListProps) {
   // Contexts
-  const { removeItemAmountInCart } = useContext(CartContext)
+  const { updateItemAmountInCart } = useContext(CartContext)
 
   // States
   const [amountToDelete, setAmountToDelete] = useState(currentItem.amount)
 
   // Functions
   function moreOne() {
-    if (amountToDelete < currentItem.amount) {
-      setAmountToDelete((state) => state + 1)
-    }
+    setAmountToDelete((state) => state + 1)
   }
 
   function lessOne() {
-    if (amountToDelete > 1) {
-      setAmountToDelete((state) => state - 1)
-    }
+    setAmountToDelete((state) => state - 1)
   }
 
   function handleRemoveAmountInCart(id: number) {
-    removeItemAmountInCart(id, amountToDelete)
+    updateItemAmountInCart(id, amountToDelete)
   }
 
   return (
