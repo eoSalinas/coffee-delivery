@@ -1,4 +1,4 @@
-import { ClockClockwise } from 'phosphor-react'
+import { Trash } from 'phosphor-react'
 import { useContext } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
 import { CartContext, Item } from '../../../../context/CartContext'
@@ -12,7 +12,7 @@ interface ItemListProps {
 
 export function ItemList({ currentItem }: ItemListProps) {
   // Contexts
-  const { changeCartItemAmount } = useContext(CartContext)
+  const { changeCartItemAmount, removeCartItem } = useContext(CartContext)
 
   // Functions
   function handleIncrease() {
@@ -21,6 +21,10 @@ export function ItemList({ currentItem }: ItemListProps) {
 
   function handleDecrease() {
     changeCartItemAmount(currentItem.id, 'decrease')
+  }
+
+  function handleRemoveItem() {
+    removeCartItem(currentItem.id)
   }
 
   return (
@@ -41,9 +45,9 @@ export function ItemList({ currentItem }: ItemListProps) {
             onDecrease={handleDecrease}
             amount={currentItem.amount}
           />
-          <RemoveFromCartButton>
-            <ClockClockwise size={16} />
-            Atualizar
+          <RemoveFromCartButton onClick={handleRemoveItem}>
+            <Trash size={16} />
+            Remover
           </RemoveFromCartButton>
         </div>
       </ItemNote>
