@@ -2,7 +2,7 @@ import { ShoppingCart } from 'phosphor-react'
 import { useContext, useState } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
 import { useCart } from '../../../../hooks/useCart'
-import { IntlCurrency } from '../../../../intlCurrency'
+import { moneyFormat } from '../../../../moneyFormat'
 import { CoffeesContext } from '../CoffeeMenu'
 
 import {
@@ -58,8 +58,7 @@ export function ProductCard() {
       <p>{details}</p>
       <PriceAndControl>
         <label>
-          R$
-          <span>{IntlCurrency.format(price)}</span>
+          R$ <span>{moneyFormat(price)}</span>
         </label>
         <ItemCounter
           onIncrease={handleIncrease}

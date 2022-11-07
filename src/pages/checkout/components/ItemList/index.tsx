@@ -2,7 +2,7 @@ import { Trash } from 'phosphor-react'
 import { useContext } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
 import { CartContext, Item } from '../../../../context/CartContext'
-import { IntlCurrency } from '../../../../intlCurrency'
+import { moneyFormat } from '../../../../moneyFormat'
 
 import { ItemListContainer, ItemNote, RemoveFromCartButton } from './style'
 
@@ -36,7 +36,7 @@ export function ItemList({ currentItem }: ItemListProps) {
       <ItemNote>
         <span>
           <h3>{`${currentItem.name}`}</h3>
-          <p>{`R$ ${IntlCurrency.format(currentItem.price)}`}</p>
+          <p>{`R$ ${moneyFormat(currentItem.price)}`}</p>
         </span>
 
         <div>

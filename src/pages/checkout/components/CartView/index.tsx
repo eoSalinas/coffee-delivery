@@ -1,5 +1,5 @@
 import { useCart } from '../../../../hooks/useCart'
-import { IntlCurrency } from '../../../../intlCurrency'
+import { moneyFormat } from '../../../../moneyFormat'
 import { ItemList } from '../ItemList'
 
 import {
@@ -31,7 +31,7 @@ export function CartView() {
         <PurchaseNote>
           <span>
             <p>Total de itens</p>
-            <p>R$ {IntlCurrency.format(cartTotalBill)}</p>
+            <p>{`R$ ${moneyFormat(cartTotalBill)}`}</p>
           </span>
 
           <span>
@@ -43,14 +43,14 @@ export function CartView() {
             <h3>Total</h3>
             <p>
               {`R$ ${
-                isCartEmpty
-                  ? IntlCurrency.format(0)
-                  : IntlCurrency.format(cartTotalBill + 3.5)
+                isCartEmpty ? moneyFormat(0) : moneyFormat(cartTotalBill + 3.5)
               }`}
             </p>
           </span>
         </PurchaseNote>
-        <ConfirmPurchaseButton>Confirmar pedido</ConfirmPurchaseButton>
+        <ConfirmPurchaseButton disabled={cart.length <= 0}>
+          Confirmar pedido
+        </ConfirmPurchaseButton>
       </Cart>
     </CartViewContainer>
   )
