@@ -9,12 +9,19 @@ import {
   PurchaseNote,
 } from './style'
 
+const DELIVERY_FEE = 3.5
+
 export function CartView() {
   // Contexts
   const { cart, cartTotalBill } = useCart()
 
   // auxiliary variables
   const isCartEmpty = !cart.length
+  const cartTotalPurchase = cartTotalBill + DELIVERY_FEE
+
+  const formattedCartTotalBill = moneyFormat(cartTotalBill)
+  const formattedCartTotalPurchase = moneyFormat(cartTotalPurchase)
+  const formattedDeliveryFee = moneyFormat(DELIVERY_FEE)
 
   return (
     <CartViewContainer>
@@ -31,19 +38,19 @@ export function CartView() {
         <PurchaseNote>
           <span>
             <p>Total de itens</p>
-            <p>{`R$ ${moneyFormat(cartTotalBill)}`}</p>
+            <p>{`R$ ${formattedCartTotalBill}`}</p>
           </span>
 
           <span>
             <p>Entrega</p>
-            <p>R$ 3,50</p>
+            <p>{`R$ ${formattedDeliveryFee}`}</p>
           </span>
 
           <span>
             <h3>Total</h3>
             <p>
               {`R$ ${
-                isCartEmpty ? moneyFormat(0) : moneyFormat(cartTotalBill + 3.5)
+                isCartEmpty ? moneyFormat(0) : formattedCartTotalPurchase
               }`}
             </p>
           </span>
