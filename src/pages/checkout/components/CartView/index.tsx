@@ -11,21 +11,10 @@ import {
 
 export function CartView() {
   // Contexts
-  const { cart } = useCart()
+  const { cart, cartTotalBill } = useCart()
 
   // auxiliary variables
   const isCartEmpty = !cart.length
-
-  // calc the total cust of cart
-  const initialTotal = 0
-  const custOfCart = cart.reduce(
-    (previusValue, currentValue) =>
-      previusValue + currentValue.price * currentValue.amount,
-    initialTotal,
-  )
-
-  const shippingPrice = 3.5
-  const totalPurchase = custOfCart + shippingPrice
 
   return (
     <CartViewContainer>
@@ -42,7 +31,7 @@ export function CartView() {
         <PurchaseNote>
           <span>
             <p>Total de itens</p>
-            <p>R$ {IntlCurrency.format(custOfCart)}</p>
+            <p>R$ {IntlCurrency.format(cartTotalBill)}</p>
           </span>
 
           <span>
@@ -56,7 +45,7 @@ export function CartView() {
               {`R$ ${
                 isCartEmpty
                   ? IntlCurrency.format(0)
-                  : IntlCurrency.format(totalPurchase)
+                  : IntlCurrency.format(cartTotalBill + 3.5)
               }`}
             </p>
           </span>
