@@ -1,7 +1,7 @@
 import { ShoppingCart } from 'phosphor-react'
 import { useContext, useState } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
-import { CartContext } from '../../../../context/CartContext'
+import { useCart } from '../../../../hooks/useCart'
 import { IntlCurrency } from '../../../../intlCurrency'
 import { CoffeesContext } from '../CoffeeMenu'
 
@@ -17,7 +17,7 @@ export function ProductCard() {
   const { coffeeImg, coffeeName, tags, details, price, id } =
     useContext(CoffeesContext)
 
-  const { addItemInCart } = useContext(CartContext)
+  const { addItemInCart } = useCart()
 
   // States
   const [coffeeAmount, setCoffeeAmount] = useState(1)

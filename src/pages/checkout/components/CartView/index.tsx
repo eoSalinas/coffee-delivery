@@ -1,5 +1,4 @@
-import { useContext } from 'react'
-import { CartContext } from '../../../../context/CartContext'
+import { useCart } from '../../../../hooks/useCart'
 import { IntlCurrency } from '../../../../intlCurrency'
 import { ItemList } from '../ItemList'
 
@@ -12,7 +11,7 @@ import {
 
 export function CartView() {
   // Contexts
-  const { cart } = useContext(CartContext)
+  const { cart } = useCart()
 
   // auxiliary variables
   const isCartEmpty = !cart.length
