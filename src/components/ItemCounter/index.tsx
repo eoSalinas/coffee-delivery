@@ -11,12 +11,12 @@ interface ItemCounterProps {
 export function ItemCounter(props: ItemCounterProps) {
   return (
     <ItemCounterContainer>
-      <button>
-        <Minus size={14} weight="bold" onClick={props.onDecrease} />
+      <button onClick={props.onDecrease} disabled={props.amount <= 1}>
+        <Minus size={14} weight="bold" />
       </button>
       <span>{props.amount}</span>
-      <button>
-        <Plus size={14} weight="bold" onClick={props.onIncrease} />
+      <button onClick={props.onIncrease}>
+        <Plus size={14} weight="bold" />
       </button>
     </ItemCounterContainer>
   )
