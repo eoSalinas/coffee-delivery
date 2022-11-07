@@ -1,3 +1,4 @@
+import produce from 'immer'
 import { createContext, ReactNode, useState } from 'react'
 
 export interface Item {
@@ -10,7 +11,7 @@ export interface Item {
 
 interface CartContextType {
   cart: Item[]
-  addItemInCart: (item: Item) => void
+  addItemInCart: (coffee: Item) => void
   updateItemAmountInCart: (id: number, amount: number) => void
 }
 
@@ -23,8 +24,20 @@ export const CartContext = createContext({} as CartContextType)
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cart, setCart] = useState<Item[]>([])
 
-  function addItemInCart(item: Item) {
-    setCart((state) => [...state, item])
+  function addItemInCart(coffee: Item) {
+    const coffeeAlreadyExistsInCart = cart.findIndex(
+      (cartItem) => cartItem.id === coffee.id,
+    )
+
+    const newCart = produce(cart, (draft) => {
+      if (coffeeAlreadyExistsInCart < 0) {
+        draft.push(coffee)
+      } else {
+        draft[coffeeAlreadyExistsInCart].amount += coffee.amount
+      }
+    })
+
+    setCart(newCart)
   }
 
   function updateItemAmountInCart(id: number, amount: number) {

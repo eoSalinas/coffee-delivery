@@ -1,8 +1,8 @@
+import { ShoppingCart } from 'phosphor-react'
 import { createContext, useContext, useState } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
-import { CoffeesContext } from '../CoffeeMenu'
 import { CartContext } from '../../../../context/CartContext'
-import { ShoppingCart } from 'phosphor-react'
+import { CoffeesContext } from '../CoffeeMenu'
 
 import {
   CartButton,
