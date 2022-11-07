@@ -43,20 +43,22 @@ export function CartView() {
         <PurchaseNote>
           <span>
             <p>Total de itens</p>
-            <p>{IntlCurrency.format(custOfCart)}</p>
+            <p>R$ {IntlCurrency.format(custOfCart)}</p>
           </span>
 
           <span>
             <p>Entrega</p>
-            <p>R$3,50</p>
+            <p>R$ 3,50</p>
           </span>
 
           <span>
             <h3>Total</h3>
             <p>
-              {isCartEmpty
-                ? IntlCurrency.format(0)
-                : IntlCurrency.format(totalPurchase)}
+              {`R$ ${
+                isCartEmpty
+                  ? IntlCurrency.format(0)
+                  : IntlCurrency.format(totalPurchase)
+              }`}
             </p>
           </span>
         </PurchaseNote>

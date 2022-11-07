@@ -32,7 +32,7 @@ export function ItemList({ currentItem }: ItemListProps) {
       <ItemNote>
         <span>
           <h3>{`${currentItem.name}`}</h3>
-          <p>{IntlCurrency.format(currentItem.price)}</p>
+          <p>{`R$ ${IntlCurrency.format(currentItem.price)}`}</p>
         </span>
 
         <div>
