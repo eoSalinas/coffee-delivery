@@ -1,5 +1,5 @@
 import { ShoppingCart } from 'phosphor-react'
-import { createContext, useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
 import { CartContext } from '../../../../context/CartContext'
 import { CoffeesContext } from '../CoffeeMenu'
@@ -16,14 +16,6 @@ const IntlCurrency = Intl.NumberFormat('pt-BR', {
   minimumFractionDigits: 2,
 })
 
-interface CoffeeAmountContextType {
-  coffeeAmount: number
-  SetCoffeeAmountLessOne: () => void
-  SetCoffeeAmountMoreOne: () => void
-}
-
-export const CoffeeAmountContext = createContext({} as CoffeeAmountContextType)
-
 export function ProductCard() {
   // Contexts
   const { coffeeImg, coffeeName, tags, details, price, id } =
@@ -35,16 +27,12 @@ export function ProductCard() {
   const [coffeeAmount, setCoffeeAmount] = useState(1)
 
   // Functions
-  function SetCoffeeAmountMoreOne() {
+  function handleIncrease() {
     setCoffeeAmount((state) => state + 1)
   }
 
-  function SetCoffeeAmountLessOne() {
+  function handleDecrease() {
     setCoffeeAmount((state) => state - 1)
-  }
-
-  function resetCoffeeAmount() {
-    setCoffeeAmount(1)
   }
 
   function handleAddItemToCart() {
@@ -57,7 +45,6 @@ export function ProductCard() {
     }
 
     addItemInCart(newItem)
-    resetCoffeeAmount()
   }
 
   return (
@@ -78,16 +65,11 @@ export function ProductCard() {
           R$
           <span>{IntlCurrency.format(price)}</span>
         </label>
-
-        <CoffeeAmountContext.Provider
-          value={{
-            coffeeAmount,
-            SetCoffeeAmountLessOne,
-            SetCoffeeAmountMoreOne,
-          }}
-        >
-          <ItemCounter />
-        </CoffeeAmountContext.Provider>
+        <ItemCounter
+          onIncrease={handleIncrease}
+          onDecrease={handleDecrease}
+          amount={coffeeAmount}
+        />
 
         <CartButton onClick={handleAddItemToCart}>
           <ShoppingCart size={22} weight="fill" />

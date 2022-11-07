@@ -1,32 +1,22 @@
-import { useContext } from 'react'
 import { Minus, Plus } from 'phosphor-react'
-import { CoffeeAmountContext } from '../../pages/home/components/ProductCard'
+
 import { ItemCounterContainer } from './style'
 
-export function ItemCounter() {
-  const { coffeeAmount, SetCoffeeAmountMoreOne, SetCoffeeAmountLessOne } =
-    useContext(CoffeeAmountContext)
+interface ItemCounterProps {
+  amount: number
+  onIncrease: () => void
+  onDecrease: () => void
+}
 
-  function handleMoreOne() {
-    if (coffeeAmount < 99) {
-      SetCoffeeAmountMoreOne()
-    }
-  }
-
-  function handleLessOne() {
-    if (coffeeAmount > 1) {
-      SetCoffeeAmountLessOne()
-    }
-  }
-
+export function ItemCounter(props: ItemCounterProps) {
   return (
     <ItemCounterContainer>
       <button>
-        <Minus size={14} weight="bold" onClick={handleLessOne} />
+        <Minus size={14} weight="bold" onClick={props.onDecrease} />
       </button>
-      <span>{coffeeAmount}</span>
+      <span>{props.amount}</span>
       <button>
-        <Plus size={14} weight="bold" onClick={handleMoreOne} />
+        <Plus size={14} weight="bold" onClick={props.onIncrease} />
       </button>
     </ItemCounterContainer>
   )

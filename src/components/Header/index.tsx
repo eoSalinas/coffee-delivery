@@ -7,10 +7,10 @@ import { CartContext } from '../../context/CartContext'
 import { CartButtonWithCounter, HeaderContainer, LocationButton } from './style'
 
 export function Header() {
-  const { cart, cartAmount } = useContext(CartContext)
+  const { cartAmount } = useContext(CartContext)
 
   // auxiliary variables
-  const isCartEmpty = !cart.length
+  const isCartEmpty = !cartAmount
 
   // Calc the total itens in cart
   // const initialAmount = 0

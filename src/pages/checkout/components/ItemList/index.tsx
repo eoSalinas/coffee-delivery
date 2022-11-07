@@ -1,7 +1,7 @@
 import { ClockClockwise } from 'phosphor-react'
-import { createContext, useContext, useState } from 'react'
+import { useContext } from 'react'
+import { ItemCounter } from '../../../../components/ItemCounter'
 import { CartContext, Item } from '../../../../context/CartContext'
-import { ItemCounterToDelete } from '../ItemCounterToDelete'
 
 import { ItemListContainer, ItemNote, RemoveFromCartButton } from './style'
 
@@ -15,34 +15,16 @@ interface ItemListProps {
   currentItem: Item
 }
 
-interface AmountToDeleteContextType {
-  amountToDelete: number
-  moreOne: () => void
-  lessOne: () => void
-}
-
-export const AmountToDeleteContext = createContext(
-  {} as AmountToDeleteContextType,
-)
-
 export function ItemList({ currentItem }: ItemListProps) {
   // Contexts
-  const { updateItemAmountInCart } = useContext(CartContext)
+  const { changeCartItemAmount } = useContext(CartContext)
 
-  // States
-  const [amountToDelete, setAmountToDelete] = useState(currentItem.amount)
-
-  // Functions
-  function moreOne() {
-    setAmountToDelete((state) => state + 1)
+  function handleIncrease() {
+    changeCartItemAmount(currentItem.id, 'increase')
   }
 
-  function lessOne() {
-    setAmountToDelete((state) => state - 1)
-  }
-
-  function handleRemoveAmountInCart(id: number) {
-    updateItemAmountInCart(id, amountToDelete)
+  function handleDecrease() {
+    changeCartItemAmount(currentItem.id, 'decrease')
   }
 
   return (
@@ -58,14 +40,12 @@ export function ItemList({ currentItem }: ItemListProps) {
         </span>
 
         <div>
-          <AmountToDeleteContext.Provider
-            value={{ amountToDelete, lessOne, moreOne }}
-          >
-            <ItemCounterToDelete />
-          </AmountToDeleteContext.Provider>
-          <RemoveFromCartButton
-            onClick={() => handleRemoveAmountInCart(currentItem.id)}
-          >
+          <ItemCounter
+            onIncrease={handleIncrease}
+            onDecrease={handleDecrease}
+            amount={currentItem.amount}
+          />
+          <RemoveFromCartButton>
             <ClockClockwise size={16} />
             Atualizar
           </RemoveFromCartButton>
