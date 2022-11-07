@@ -79,7 +79,16 @@ export const ConfirmPurchaseButton = styled.button`
   background: ${(props) => props.theme['yellow-500']};
 
   &:hover {
-    transition: all 60ms;
+    transition: all 100ms;
     background: ${(props) => props.theme['yellow-900']};
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+
+    :hover {
+      background: ${(props) => props.theme['yellow-500']};
+    }
   }
 `
