@@ -46,16 +46,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCart(newCart)
   }
 
-  // function updateItemAmountInCart(id: number, amount: number) {
-  //   const copyCart = cart
-  //   const findIndexInCart = copyCart.findIndex((item) => item.id === id)
-
-  //   copyCart[findIndexInCart].amount = amount
-
-  //   setCart(copyCart)
-  //   console.log(cart)
-  // }
-
   function changeCartItemAmount(
     cartItemId: number,
     type: 'increase' | 'decrease',

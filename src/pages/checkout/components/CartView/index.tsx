@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { CartContext } from '../../../../context/CartContext'
+import { IntlCurrency } from '../../../../intlCurrency'
 import { ItemList } from '../ItemList'
 
 import {
@@ -8,12 +9,6 @@ import {
   ConfirmPurchaseButton,
   PurchaseNote,
 } from './style'
-
-const IntlCurrency = Intl.NumberFormat('pt-BR', {
-  style: 'currency',
-  currency: 'BRL',
-  minimumFractionDigits: 2,
-})
 
 export function CartView() {
   // Contexts

@@ -2,6 +2,7 @@ import { ShoppingCart } from 'phosphor-react'
 import { useContext, useState } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
 import { CartContext } from '../../../../context/CartContext'
+import { IntlCurrency } from '../../../../intlCurrency'
 import { CoffeesContext } from '../CoffeeMenu'
 
 import {
@@ -10,11 +11,6 @@ import {
   ProductCardContainer,
   ProductTag,
 } from './style'
-
-const IntlCurrency = Intl.NumberFormat('pt-BR', {
-  currency: 'BRL',
-  minimumFractionDigits: 2,
-})
 
 export function ProductCard() {
   // Contexts

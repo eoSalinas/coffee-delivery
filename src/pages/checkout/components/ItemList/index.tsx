@@ -2,14 +2,9 @@ import { ClockClockwise } from 'phosphor-react'
 import { useContext } from 'react'
 import { ItemCounter } from '../../../../components/ItemCounter'
 import { CartContext, Item } from '../../../../context/CartContext'
+import { IntlCurrency } from '../../../../intlCurrency'
 
 import { ItemListContainer, ItemNote, RemoveFromCartButton } from './style'
-
-const IntlCurrency = Intl.NumberFormat('pt-BR', {
-  style: 'currency',
-  currency: 'BRL',
-  minimumFractionDigits: 2,
-})
 
 interface ItemListProps {
   currentItem: Item
@@ -19,6 +14,7 @@ export function ItemList({ currentItem }: ItemListProps) {
   // Contexts
   const { changeCartItemAmount } = useContext(CartContext)
 
+  // Functions
   function handleIncrease() {
     changeCartItemAmount(currentItem.id, 'increase')
   }
