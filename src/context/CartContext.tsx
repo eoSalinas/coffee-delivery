@@ -1,5 +1,5 @@
 import produce from 'immer'
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useState, useEffect } from 'react'
 
 export interface Item {
   id: number
@@ -27,8 +27,18 @@ interface CartContextProviderProps {
 
 export const CartContext = createContext({} as CartContextType)
 
+const CART_ITENS_STORAGE_KEY = '@coffee-delivery:cart-state-1.0.0'
+
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cart, setCart] = useState<Item[]>([])
+  const [cart, setCart] = useState<Item[]>(() => {
+    const storedCartItens = localStorage.getItem(CART_ITENS_STORAGE_KEY)
+
+    if (storedCartItens) {
+      return JSON.parse(storedCartItens)
+    }
+
+    return []
+  })
 
   const cartAmount = cart.length
 
@@ -84,6 +94,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
     setCart(newCart)
   }
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cart)
+
+    localStorage.setItem(CART_ITENS_STORAGE_KEY, stateJSON)
+  }, [cart])
 
   return (
     <CartContext.Provider
