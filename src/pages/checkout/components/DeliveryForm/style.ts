@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const DeliveryFormContainer = styled.form`
+export const DeliveryFormContainer = styled.div`
   width: 40rem;
   height: 39.3125rem;
 

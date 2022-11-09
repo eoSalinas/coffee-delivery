@@ -55,7 +55,7 @@ export function CartView() {
             </p>
           </span>
         </PurchaseNote>
-        <ConfirmPurchaseButton disabled={cart.length <= 0}>
+        <ConfirmPurchaseButton disabled={cart.length <= 0} type="submit">
           Confirmar pedido
         </ConfirmPurchaseButton>
       </Cart>

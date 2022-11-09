@@ -5,6 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
+import { useFormContext } from 'react-hook-form'
 
 import {
   AdressForm,
@@ -16,6 +17,8 @@ import {
 } from './style'
 
 export function DeliveryForm() {
+  const { register } = useFormContext()
+
   return (
     <DeliveryFormContainer>
       <h1>Complete seu pedido</h1>
@@ -32,29 +35,44 @@ export function DeliveryForm() {
             type="number"
             placeholder="CEP"
             inputWidth={'width200'}
+            {...register('cep')}
           />
-          <AdressInput type="text" placeholder="Rua" inputWidth="widthFull" />
+          <AdressInput
+            type="text"
+            placeholder="Rua"
+            inputWidth="widthFull"
+            {...register('rua')}
+          />
           <AdressInput
             type="number"
             placeholder="Número"
             inputWidth={'width200'}
+            {...register('number')}
           />
           <AdressInput
             type="text"
             placeholder="Complemento"
             inputWidth={'width348'}
+            {...register('complement')}
           />
           <AdressInput
             type="text"
             placeholder="Bairro"
             inputWidth={'width200'}
+            {...register('district')}
           />
           <AdressInput
             type="text"
             placeholder="Cidade"
             inputWidth={'width276'}
+            {...register('city')}
           />
-          <AdressInput type="text" placeholder="UF" inputWidth={'width60'} />
+          <AdressInput
+            type="text"
+            placeholder="UF"
+            inputWidth={'width60'}
+            {...register('uf')}
+          />
         </div>
       </AdressForm>
 
