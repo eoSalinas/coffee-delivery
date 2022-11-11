@@ -1,9 +1,16 @@
+/* eslint-disable no-unused-vars */
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { CartView } from './components/CartView'
 import { DeliveryForm } from './components/DeliveryForm'
 import { CheckoutContainer } from './style'
+
+enum PaymentWay {
+  credit = 'credit',
+  debit = 'debit',
+  cash = 'cash',
+}
 
 const checkoutValidationSchema = zod.object({
   cep: zod.string().min(1, 'Informe o CEP'),
@@ -12,7 +19,12 @@ const checkoutValidationSchema = zod.object({
   complement: zod.string(),
   district: zod.string().min(1, 'Informe o bairro'),
   city: zod.string().min(1, 'Informe a cidade'),
-  uf: zod.string().min(2, 'Informe uma UF válida'),
+  uf: zod.string().min(2, 'Informe uma UF válida').max(2),
+  paymentWay: zod.nativeEnum(PaymentWay, {
+    errorMap: () => {
+      return { message: 'Informe a forma de pagamento' }
+    },
+  }),
 })
 
 export type CheckoutData = zod.infer<typeof checkoutValidationSchema>

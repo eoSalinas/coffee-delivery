@@ -6,15 +6,33 @@ import {
   Money,
 } from 'phosphor-react'
 import { useFormContext } from 'react-hook-form'
+import { PaymentWayInput } from '../PaymentWayInput'
 
 import {
   AdressForm,
   AdressInput,
   DeliveryFormContainer,
-  PaymentLabel,
   PaymentWay,
   StepHeader,
 } from './style'
+
+const paymentWays = {
+  credit: {
+    label: 'Cartão de crédito',
+    icon: <CreditCard size={16} />,
+    id: 'credit',
+  },
+  debit: {
+    label: 'Cartão de débito',
+    icon: <Bank size={16} />,
+    id: 'debit',
+  },
+  cash: {
+    label: 'Dinheiro',
+    icon: <Money size={16} />,
+    id: 'cash',
+  },
+}
 
 export function DeliveryForm() {
   const { register } = useFormContext()
@@ -87,23 +105,18 @@ export function DeliveryForm() {
           </p>
         </StepHeader>
         <div>
-          <input type="radio" name="paymentWay" id="credit-card" />
-          <PaymentLabel htmlFor="credit-card">
-            <CreditCard size={16} />
-            <span>Cartão de crédito</span>
-          </PaymentLabel>
-
-          <input type="radio" name="paymentWay" id="debit-card" />
-          <PaymentLabel htmlFor="debit-card">
-            <Bank size={16} />
-            <span>Cartão de débito</span>
-          </PaymentLabel>
-
-          <input type="radio" name="paymentWay" id="cash" />
-          <PaymentLabel htmlFor="cash">
-            <Money size={16} />
-            <span>Dinheiro</span>
-          </PaymentLabel>
+          {Object.entries(paymentWays).map(([key, { label, icon }]) => {
+            return (
+              <PaymentWayInput
+                key={label}
+                id={key}
+                icon={icon}
+                label={label}
+                value={key}
+                {...register('paymentWay')}
+              />
+            )
+          })}
         </div>
       </PaymentWay>
     </DeliveryFormContainer>
