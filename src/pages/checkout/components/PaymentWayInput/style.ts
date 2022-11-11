@@ -25,6 +25,7 @@ export const PaymentLabel = styled.label`
   &:hover {
     transition: all 60ms;
     background: ${(props) => props.theme['gray-900']};
+    cursor: pointer;
   }
 
   span {
