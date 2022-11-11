@@ -1,5 +1,6 @@
 import { CurrencyDollarSimple, MapPin, Timer } from 'phosphor-react'
-import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import deliveryGuyIMG from '../../assets/delivery-guy.svg'
 import { Badge } from '../../styles/Badge'
 import { CheckoutData } from '../checkout'
@@ -13,6 +14,16 @@ interface LocationType {
 
 export function Success() {
   const { state } = useLocation() as unknown as LocationType
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!state) {
+      navigate('/')
+    }
+  }, [])
+
+  if (!state) return <></>
 
   return (
     <SuccesContainer>
