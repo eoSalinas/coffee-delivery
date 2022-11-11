@@ -6,6 +6,7 @@ import { CartView } from './components/CartView'
 import { DeliveryForm } from './components/DeliveryForm'
 import { CheckoutContainer } from './style'
 import { useNavigate } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 enum PaymentWay {
   credit = 'credit',
@@ -41,10 +42,13 @@ export function Checkout() {
 
   const navigate = useNavigate()
 
+  const { clearCart } = useCart()
+
   function handleConfirmCheckoutPurchase(data: checkoutFormData) {
     navigate('/success', {
       state: data,
     })
+    clearCart()
   }
 
   return (
