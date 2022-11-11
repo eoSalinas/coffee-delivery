@@ -1,10 +1,19 @@
 import { CurrencyDollarSimple, MapPin, Timer } from 'phosphor-react'
+import { useLocation } from 'react-router-dom'
 import deliveryGuyIMG from '../../assets/delivery-guy.svg'
 import { Badge } from '../../styles/Badge'
+import { CheckoutData } from '../checkout'
+import { paymentWays } from '../checkout/components/DeliveryForm'
 
 import { PurchaseInfo, SuccesContainer } from './style'
 
+interface LocationType {
+  state: CheckoutData
+}
+
 export function Success() {
+  const { state } = useLocation() as unknown as LocationType
+
   return (
     <SuccesContainer>
       <h1>Uhu! Pedido confirmado</h1>
@@ -17,9 +26,14 @@ export function Success() {
             </Badge>
             <span>
               <h3>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  {state.street}, {state.number}
+                </strong>
               </h3>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>
+                {state.district} - {state.city}, {state.uf}
+              </p>
             </span>
           </li>
           <li>
@@ -37,7 +51,7 @@ export function Success() {
             </Badge>
             <span>
               <h3>Pagamento na entrega</h3>
-              <strong>Cartão de Crédito</strong>
+              <strong>{paymentWays[state.paymentWay].label}</strong>
             </span>
           </li>
         </ul>

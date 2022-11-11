@@ -5,6 +5,7 @@ import * as zod from 'zod'
 import { CartView } from './components/CartView'
 import { DeliveryForm } from './components/DeliveryForm'
 import { CheckoutContainer } from './style'
+import { useNavigate } from 'react-router-dom'
 
 enum PaymentWay {
   credit = 'credit',
@@ -14,7 +15,7 @@ enum PaymentWay {
 
 const checkoutValidationSchema = zod.object({
   cep: zod.string().min(1, 'Informe o CEP'),
-  rua: zod.string().min(1, 'Informe a rua'),
+  street: zod.string().min(1, 'Informe a rua'),
   number: zod.string().min(1, 'Informe o número para entrega'),
   complement: zod.string(),
   district: zod.string().min(1, 'Informe o bairro'),
@@ -38,8 +39,12 @@ export function Checkout() {
 
   const { handleSubmit } = checkoutForm
 
+  const navigate = useNavigate()
+
   function handleConfirmCheckoutPurchase(data: checkoutFormData) {
-    console.log(data)
+    navigate('/success', {
+      state: data,
+    })
   }
 
   return (
