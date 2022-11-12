@@ -3,7 +3,7 @@
 <p align="center">
 Um delivery de café, projeto proposto como desafio pela Rocketseat.
 <br>
-Entenda melhor o projeto acessando os links abaixo...
+Saiba mais acessando os links abaixo...
 </p>
 
 <p align="center">
